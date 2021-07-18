@@ -1,0 +1,18 @@
+dubbo:
+  application:
+    name: ${spring.application.name}
+  registry:
+    address: nacos://127.0.0.1:8848?username=nacos&password=nacos&&namespace=test
+    use-as-metadata-center: false
+    username: nacos
+    password: nacos
+    group: test
+    parameters:
+      group: test
+      namespace: test
+  consumer:
+    timeout: 4000
+
+spring:
+  application:
+    name: test-dubbo-consumer

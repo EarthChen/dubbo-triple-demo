@@ -1,0 +1,5 @@
+rootProject.name = 'dubbo-tripe-demo'
+include 'provider-demo'
+include 'consumer-demo'
+include 'grpc-consumer-demo'
+

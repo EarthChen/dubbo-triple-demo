@@ -1,0 +1,6 @@
+grpc:
+  client:
+    myService:
+      address: static://localhost:20880
+    GLOBAL:
+      negotiation-type: plaintext

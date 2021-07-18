@@ -1,0 +1,68 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    provided
+}
+
+dependencies {
+    compile('com.alibaba.nacos:nacos-client:2.0.2')
+    implementation("org.apache.dubbo:dubbo-spring-boot-starter:${dubboVersion}")
+    implementation("org.apache.dubbo:dubbo-registry-nacos:${dubboVersion}")
+    compile("org.example:dubbo-proto-lib:1.0-SNAPSHOT")
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
+    implementation("org.springframework.boot:spring-boot-starter-web")
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allJava
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            groupId project.group
+            artifactId project.name
+            version project.version
+            pom {
+                name = project.name
+                description = project.description
+            }
+        }
+    }
+    repositories {
+        maven {
+            def releasesRepoUrl = "http://repo.duobeiyun.net/repository/maven-releases/"
+            def snapshotsRepoUrl = "http://repo.duobeiyun.net/repository/maven-snapshots/"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            credentials {
+                def nexusUsername = "duobei"
+                def nexusPassword = "6f619225058640e5a3a0964986cf8218"
+                username nexusUsername
+                password nexusPassword
+            }
+        }
+    }
+}
+
+
