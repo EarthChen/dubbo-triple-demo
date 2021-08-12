@@ -10,8 +10,10 @@ dubbo:
     parameters:
       group: test
       namespace: test
+    use-as-config-center: false
   consumer:
     timeout: 4000
+    check: false
 
 spring:
   application:

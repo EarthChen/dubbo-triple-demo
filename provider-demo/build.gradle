@@ -11,12 +11,15 @@ configurations {
 }
 
 dependencies {
+    compile(project(":dubbo-lib"))
     compile('com.alibaba.nacos:nacos-client:2.0.2')
+    implementation("org.apache.dubbo:dubbo-rpc-triple:${dubboVersion}")
     implementation("org.apache.dubbo:dubbo-spring-boot-starter:${dubboVersion}")
     implementation("org.apache.dubbo:dubbo-registry-nacos:${dubboVersion}")
-    compile("org.example:dubbo-proto-lib:1.0-SNAPSHOT")
+    compile("org.example:dubbo-proto-lib:${dubboVersion}")
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
     implementation("org.springframework.boot:spring-boot-starter-web")
+//    implementation("org.springframework.boot:spring-boot-starter")
 }
 
 test {
