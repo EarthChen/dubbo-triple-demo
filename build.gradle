@@ -1,15 +1,13 @@
 buildscript {
     ext {
-//        springIOVersion = '1.0.7.RELEASE'
-        springBootVersion = '2.3.9.RELEASE'
-        springCloudVersion = 'Hoxton.SR5'
-        springContractVersion = '2.1.3.RELEASE'
+        springBootVersion = '2.3.12.RELEASE'
+        springCloudVersion = 'Hoxton.SR12'
         springCloudAlibabaVersion = '2021.1'
 
         lombokVersion = '1.18.10'
 
 //        dubboVersion = '3.0.1'
-        dubboVersion = '3.0.2-SNAPSHOT'
+        dubboVersion = '3.0.2'
         lang3Version = '3.9'
         grpcVersion = '1.36.0'
         protobufVersion = '3.11.0'
@@ -25,7 +23,6 @@ buildscript {
 
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath("org.springframework.cloud:spring-cloud-contract-gradle-plugin:${springContractVersion}")
     }
 }
 

@@ -12,6 +12,7 @@ configurations {
 
 dependencies {
     compile(project(":dubbo-lib"))
+    implementation("org.springframework.boot:spring-boot-starter-web")
     compile('com.alibaba.nacos:nacos-client:2.0.2')
     implementation("org.apache.dubbo:dubbo-spring-boot-starter:${dubboVersion}")
     implementation("org.apache.dubbo:dubbo-registry-nacos:${dubboVersion}")

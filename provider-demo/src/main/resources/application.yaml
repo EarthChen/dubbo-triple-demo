@@ -4,17 +4,19 @@ dubbo:
   provider:
     filter: -exception
   registry:
-    address: nacos://127.0.0.1:8848?username=nacos&password=nacos&namespace=test
-    use-as-metadata-center: false
+#    address: nacos://127.0.0.1:8848?username=nacos&password=nacos&namespace=test
+    address: zookeeper://127.0.0.1:2181
+#    use-as-metadata-center: false
 #    use-as-config-center: false
     username: nacos
     password: nacos
-    group: test
-    parameters:
-      group: test
-      namespace: test
-      username: nacos
-      password: nacos
+#    group: test
+#    parameters:
+#      registry-type: service
+#      group: test
+#      namespace: test
+#      username: nacos
+#      password: nacos
   protocol:
     port: 10081
     name: tri

@@ -3,7 +3,6 @@ package com.test.dubbo.impl;
 import com.earthchen.rpc.lib.HelloReply;
 import com.earthchen.rpc.lib.HelloRequest;
 import com.earthchen.rpc.lib.MyService;
-import com.test.exception.DubboBizException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
 
@@ -20,7 +19,8 @@ public class MyServiceImpl implements MyService {
     @Override
     public HelloReply sayHello(HelloRequest helloRequest) {
         log.error("test runtimeException helloRequest={}", helloRequest);
-        throw new DubboBizException(1111, "test");
+        // throw new DubboBizException(1111, "test");
+        return HelloReply.newBuilder().setMessage("HelloReply").build();
     }
 
     @Override

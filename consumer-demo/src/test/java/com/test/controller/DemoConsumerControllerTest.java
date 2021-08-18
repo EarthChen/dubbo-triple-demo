@@ -19,7 +19,6 @@ class DemoConsumerControllerTest {
     @org.junit.jupiter.api.Test
     public void sayHello() {
         try {
-            log.info("----------------------------------------------");
             HelloReply helloReply = myServiceStub.sayHello(HelloRequest.newBuilder().setName("ssss").build());
             System.out.println(helloReply);
         } catch (Exception e) {
