@@ -60,5 +60,7 @@ service Health {
   // call.  If the call terminates with any other status (including OK),
   // clients should retry the call with appropriate exponential backoff.
   rpc Watch(HealthCheckRequest) returns (stream HealthCheckResponse);
+
+  rpc Watch2(stream HealthCheckRequest) returns (stream HealthCheckResponse);
 }
 

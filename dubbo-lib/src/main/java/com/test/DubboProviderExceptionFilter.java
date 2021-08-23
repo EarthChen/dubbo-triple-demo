@@ -1,5 +1,6 @@
 package com.test;
 
+import com.google.protobuf.Any;
 import com.test.exception.DubboBizException;
 import org.apache.dubbo.common.constants.CommonConstants;
 import org.apache.dubbo.common.extension.Activate;
@@ -16,6 +17,7 @@ import org.apache.dubbo.rpc.RpcException;
 import org.apache.dubbo.rpc.service.GenericService;
 
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 /**
@@ -60,9 +62,12 @@ public class DubboProviderExceptionFilter implements Filter, Filter.Listener {
 
                 if (exception instanceof DubboBizException) {
                     DubboBizException bizException = (DubboBizException) exception;
-                    Map<String, String> attach = appResponse.getAttachments();
+                    Map<String, Object> attach = appResponse.getObjectAttachments();
                     attach.put(DubboConstant.CODE, bizException.getCode().toString());
-                    attach.put(DubboConstant.MSG, bizException.getMessage());
+                    attach.put(DubboConstant.MSG, bizException.getMessage().getBytes(StandardCharsets.UTF_8));
+
+                    appResponse.setException(null);
+                    appResponse.setValue(Any.newBuilder().build());
                     return;
                 }
 

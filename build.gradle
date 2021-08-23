@@ -7,7 +7,7 @@ buildscript {
         lombokVersion = '1.18.10'
 
 //        dubboVersion = '3.0.1'
-        dubboVersion = '3.0.2'
+        dubboVersion = '3.0.3-SNAPSHOT'
         lang3Version = '3.9'
         grpcVersion = '1.36.0'
         protobufVersion = '3.11.0'
